@@ -1,0 +1,7 @@
+version: 2
+
+sources:
+  - name: rds
+    schema: public
+    tables:
+      - name: youtube_snapshots
