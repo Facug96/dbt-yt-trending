@@ -33,7 +33,7 @@ S3: latest/*.json
 GitHub Pages dashboard
 ```
 #### External Architecture
----
+![Architecture diagram](assets/architecture_ext.png)
 
 ## Stack
 
