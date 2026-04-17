@@ -30,6 +30,17 @@ conn = pg8000.connect(
     )
 cursor = conn.cursor()
 s3 = boto3.client('s3')
+ssm = boto3.client('ssm', region_name='us-east-2')
+
+def get_param(name):
+    return ssm.get_parameter(Name=name, WithDecryption=True)['Parameter']['Value']
+
+DB_HOST     = get_param('/yt-pipeline/DB_HOST')
+DB_NAME     = get_param('/yt-pipeline/DB_NAME')
+DB_USER     = get_param('/yt-pipeline/DB_USER')
+DB_PASSWORD = get_param('/yt-pipeline/DB_PASSWORD')
+S3_BUCKET   = get_param('/yt-pipeline/S3_BUCKET')
+
 
 for view, s3_key in VIEWS_S3_KEYS.items():
     cursor.execute(f'SELECT * FROM "{view}"')
