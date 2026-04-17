@@ -9,29 +9,7 @@ Event based ETL pipeline that tracks YouTube's daily trending videos in Uruguay,
 ## Architecture
 #### Internal Architecture
 ![Architecture diagram](assets/architecture.png)
-```
-EventBridge (daily)
-      ↓
-Lambda: extract-events-001       ← fetches YouTube API
-      ↓
-S3: raw/youtube/...json
-      ↓ (S3 trigger)
-Lambda: proc-events-001          ← flattens JSON → CSV
-      ↓
-S3: processed/youtube/...csv
-      ↓ (S3 trigger)
-Lambda: load-events-001          ← loads CSV → RDS
-      ↓
-RDS: Postgres (youtube_snapshots)
-      ↓ (EC2 cron, daily)
-dbt run                          ← builds analytical views
-      ↓
-export_to_s3.py                  ← queries views → uploads JSONs
-      ↓
-S3: latest/*.json
-      ↓ (fetch from browser)
-GitHub Pages dashboard
-```
+
 #### External Architecture
 ![Architecture diagram](assets/architecture_ext.png)
 
