@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<!-- saved from url=(0043)file:///C:/Users/facug/Downloads/index.html -->
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UY Trending · Facundo Gil</title>
+<link href="./UY Trending · Facundo Gil_files/css2" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --text: #1a1a1a;
+    --muted: #888;
+    --border: #e8e8e8;
+    --bg: #fff;
+    --surface: #f7f7f7;
+    --in: #1a7a4a;
+    --in-bg: #edf7f1;
+    --out: #b83232;
+    --out-bg: #fdf0f0;
+    --stay-bg: #f3f3f3;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 5rem;
+  }
+
+  header {
+    margin-bottom: 2.5rem;
+  }
+
+  .back-link {
+    display: inline-block;
+    font-size: 13px;
+    color: var(--muted);
+    text-decoration: none;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.01em;
+  }
+
+  .back-link:hover { color: var(--text); }
+
+  h1 {
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+  }
+
+  .subtitle {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  nav {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2rem;
+  }
+
+  .nav-btn {
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    color: var(--muted);
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    padding: 0.6rem 1rem 0.6rem 0;
+    margin-right: 1.5rem;
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .nav-btn:hover { color: var(--text); }
+  .nav-btn.active { color: var(--text); border-bottom-color: var(--text); font-weight: 500; }
+
+  .section { display: none; }
+  .section.active { display: block; }
+
+  /* VIDEO ROW */
+  .video-row {
+    display: grid;
+    grid-template-columns: 22px 56px 1fr auto;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.15s;
+  }
+
+  .video-row:last-child { border-bottom: none; }
+  .video-row:hover { opacity: 0.7; }
+
+  .rank-num {
+    font-size: 12px;
+    color: var(--muted);
+    text-align: right;
+    font-weight: 400;
+  }
+
+  .thumb {
+    width: 56px;
+    height: 42px;
+    object-fit: cover;
+    border-radius: 2px;
+    background: var(--surface);
+  }
+
+  .video-info { min-width: 0; }
+
+  .video-title {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.4;
+  }
+
+  .video-channel {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  .video-views {
+    font-size: 12px;
+    color: var(--muted);
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  /* MOVEMENTS */
+  .movement-group { margin-bottom: 2rem; }
+
+  .group-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    display: inline-block;
+  }
+
+  .group-label.in  { background: var(--in-bg);   color: var(--in); }
+  .group-label.out { background: var(--out-bg);  color: var(--out); }
+  .group-label.stay{ background: var(--stay-bg); color: var(--muted); }
+
+  .empty-state {
+    font-size: 13px;
+    color: var(--muted);
+    padding: 0.5rem 0 0.5rem;
+  }
+
+  /* HISTORY */
+  .date-group { margin-bottom: 2rem; }
+
+  .date-label {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .history-row {
+    display: grid;
+    grid-template-columns: 22px 1fr auto;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .history-row:last-child { border-bottom: none; }
+
+  .history-title {
+    font-size: 13px;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .history-views {
+    font-size: 12px;
+    color: var(--muted);
+    text-align: right;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a class="back-link" href="https://facug96.github.io/">← facug96.github.io</a>
+  <h1>Trending Youtube Videos in Uruguay</h1>
+  <p class="subtitle">YouTube top 5 · Uruguay · Daily refresh</p>
+</header>
+
+<nav>
+  <button class="nav-btn active" onclick="show(&#39;today&#39;, this)">Today</button>
+  <button class="nav-btn" onclick="show(&#39;movements&#39;, this)">Movements</button>
+  <button class="nav-btn" onclick="show(&#39;history&#39;, this)">History</button>
+</nav>
+
+<div id="today" class="section active"><a class="video-row" href="https://youtube.com/watch?v=7ixa1wvzET4" target="_blank" rel="noopener">
+    <span class="rank-num">1</span>
+    <img class="thumb" src="./UY Trending · Facundo Gil_files/default.jpg" alt="" loading="lazy">
+    <div class="video-info">
+      <div class="video-title">The La Planta - Muero Por Ti + Candu Domínguez ( Video Oficial )</div>
+      <div class="video-channel">The La Planta</div>
+    </div>
+    <div class="video-views">569K</div>
+  </a><a class="video-row" href="https://youtube.com/watch?v=Fsr14-8sxtA" target="_blank" rel="noopener">
+    <span class="rank-num">2</span>
+    <img class="thumb" src="./UY Trending · Facundo Gil_files/default(1).jpg" alt="" loading="lazy">
+    <div class="video-info">
+      <div class="video-title">Jay Wheeler - De Lejitos (Official Video)</div>
+      <div class="video-channel">JayWheelerVEVO</div>
+    </div>
+    <div class="video-views">6.7M</div>
+  </a><a class="video-row" href="https://youtube.com/watch?v=v3YHdjWJwBY" target="_blank" rel="noopener">
+    <span class="rank-num">3</span>
+    <img class="thumb" src="./UY Trending · Facundo Gil_files/default(2).jpg" alt="" loading="lazy">
+    <div class="video-info">
+      <div class="video-title">MALPARIDO - ZEBALLOS, DUKI</div>
+      <div class="video-channel">Zeballos 17</div>
+    </div>
+    <div class="video-views">244K</div>
+  </a><a class="video-row" href="https://youtube.com/watch?v=VA0U3qqNR34" target="_blank" rel="noopener">
+    <span class="rank-num">4</span>
+    <img class="thumb" src="./UY Trending · Facundo Gil_files/default(3).jpg" alt="" loading="lazy">
+    <div class="video-info">
+      <div class="video-title">LAUTA x Amigo de Artistas | Puñaladas (Acústico)</div>
+      <div class="video-channel">LAUTA</div>
+    </div>
+    <div class="video-views">1.9M</div>
+  </a><a class="video-row" href="https://youtube.com/watch?v=o9RfPHyp1nI" target="_blank" rel="noopener">
+    <span class="rank-num">5</span>
+    <img class="thumb" src="./UY Trending · Facundo Gil_files/default(4).jpg" alt="" loading="lazy">
+    <div class="video-info">
+      <div class="video-title">The La Planta - Una Condena + Amigo De Artistas ( Video Oficial )</div>
+      <div class="video-channel">The La Planta</div>
+    </div>
+    <div class="video-views">111K</div>
+  </a></div>
+<div id="movements" class="section"><div class="movement-group">
+    <span class="group-label in">Entered top 5</span>
+    <p class="empty-state">None</p>
+  </div><div class="movement-group">
+    <span class="group-label out">Left top 5</span>
+    <p class="empty-state">None</p>
+  </div><div class="movement-group">
+    <span class="group-label stay">Remained in top 5</span>
+    <a class="video-row" href="https://youtube.com/watch?v=7ixa1wvzET4" target="_blank" rel="noopener">
+    <span class="rank-num">1</span>
+    <img class="thumb" src="./UY Trending · Facundo Gil_files/default.jpg" alt="" loading="lazy">
+    <div class="video-info">
+      <div class="video-title">The La Planta - Muero Por Ti</div>
+      <div class="video-channel">The La Planta</div>
+    </div>
+    <div class="video-views">569K</div>
+  </a><a class="video-row" href="https://youtube.com/watch?v=Fsr14-8sxtA" target="_blank" rel="noopener">
+    <span class="rank-num">2</span>
+    <img class="thumb" src="./UY Trending · Facundo Gil_files/default(1).jpg" alt="" loading="lazy">
+    <div class="video-info">
+      <div class="video-title">Jay Wheeler - De Lejitos (Official Video)</div>
+      <div class="video-channel">JayWheelerVEVO</div>
+    </div>
+    <div class="video-views">6.7M</div>
+  </a><a class="video-row" href="https://youtube.com/watch?v=v3YHdjWJwBY" target="_blank" rel="noopener">
+    <span class="rank-num">3</span>
+    <img class="thumb" src="./UY Trending · Facundo Gil_files/default(2).jpg" alt="" loading="lazy">
+    <div class="video-info">
+      <div class="video-title">MALPARIDO - ZEBALLOS, DUKI</div>
+      <div class="video-channel">Zeballos 17</div>
+    </div>
+    <div class="video-views">244K</div>
+  </a><a class="video-row" href="https://youtube.com/watch?v=VA0U3qqNR34" target="_blank" rel="noopener">
+    <span class="rank-num">4</span>
+    <img class="thumb" src="./UY Trending · Facundo Gil_files/default(3).jpg" alt="" loading="lazy">
+    <div class="video-info">
+      <div class="video-title">LAUTA x Amigo de Artistas | Puñaladas</div>
+      <div class="video-channel">LAUTA</div>
+    </div>
+    <div class="video-views">1.9M</div>
+  </a><a class="video-row" href="https://youtube.com/watch?v=o9RfPHyp1nI" target="_blank" rel="noopener">
+    <span class="rank-num">5</span>
+    <img class="thumb" src="./UY Trending · Facundo Gil_files/default(4).jpg" alt="" loading="lazy">
+    <div class="video-info">
+      <div class="video-title">The La Planta - Una Condena</div>
+      <div class="video-channel">The La Planta</div>
+    </div>
+    <div class="video-views">111K</div>
+  </a>
+  </div></div>
+<div id="history" class="section">
+  <div class="date-group">
+    <div class="date-label">16 abr. 2026</div>
+    <div class="history-row">
+      <span class="rank-num">1</span>
+      <span class="history-title">The La Planta - Muero Por Ti</span>
+      <span class="history-views">569K</span>
+    </div><div class="history-row">
+      <span class="rank-num">2</span>
+      <span class="history-title">Jay Wheeler - De Lejitos</span>
+      <span class="history-views">6.7M</span>
+    </div><div class="history-row">
+      <span class="rank-num">3</span>
+      <span class="history-title">MALPARIDO - ZEBALLOS, DUKI</span>
+      <span class="history-views">244K</span>
+    </div><div class="history-row">
+      <span class="rank-num">4</span>
+      <span class="history-title">LAUTA x Amigo de Artistas | Puñaladas</span>
+      <span class="history-views">1.9M</span>
+    </div><div class="history-row">
+      <span class="rank-num">5</span>
+      <span class="history-title">The La Planta - Una Condena</span>
+      <span class="history-views">111K</span>
+    </div>
+  </div>
+  <div class="date-group">
+    <div class="date-label">9 abr. 2026</div>
+    <div class="history-row">
+      <span class="rank-num">1</span>
+      <span class="history-title">LAUTA x Amigo de Artistas | Puñaladas</span>
+      <span class="history-views">1.9M</span>
+    </div><div class="history-row">
+      <span class="rank-num">2</span>
+      <span class="history-title">La T y La M - Soy Favela</span>
+      <span class="history-views">521K</span>
+    </div><div class="history-row">
+      <span class="rank-num">3</span>
+      <span class="history-title">Video #3 del día anterior</span>
+      <span class="history-views">240K</span>
+    </div>
+  </div></div>
+
+<script>
+const BASE = 'https://facu-de-events-raw-01.s3.us-east-2.amazonaws.com/latest';
+
+function fmtViews(n) {
+  if (n >= 1e6) return (n/1e6).toFixed(1)+'M';
+  if (n >= 1e3) return Math.round(n/1e3)+'K';
+  return n;
+}
+
+function fmtDate(ts) {
+  return new Date(ts).toLocaleDateString('es-UY',{day:'numeric',month:'short',year:'numeric'});
+}
+
+function videoRow(v) {
+  return '<a class="video-row" href="https://youtube.com/watch?v='+v.id+'" target="_blank">'
+    +'<span class="rank-num'+(v.rank===1?' top':'')+'">'+v.rank+'</span>'
+    +'<img class="thumb" src="'+v.snippet_thumbnails_default_url+'" alt="" loading="lazy">'
+    +'<div class="video-info"><div class="video-title">'+v.snippet_title.trim()+'</div>'
+    +'<div class="video-channel">'+v.snippet_channeltitle.trim()+'</div></div>'
+    +'<div class="video-views">'+fmtViews(v.statistics_viewcount)+'</div></a>';
+}
+
+function movGroup(label,cls,items){
+  return '<div class="movement-group"><div class="group-label '+cls+'">'+label+'</div>'
+    +(items.length?items.map(videoRow).join(''):'<p class="empty-msg">ninguno</p>')+'</div>';
+}
+
+function show(id,btn){
+  document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active');});
+  document.querySelectorAll('.nav-btn').forEach(function(b){b.classList.remove('active');});
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+(async () => {
+  const [today, inn, out, both, history] = await Promise.all([
+    fetch(BASE+'/today.json').then(r => r.json()),
+    fetch(BASE+'/in.json').then(r => r.json()),
+    fetch(BASE+'/out.json').then(r => r.json()),
+    fetch(BASE+'/both.json').then(r => r.json()),
+    fetch(BASE+'/history.json').then(r => r.json()),
+  ]);
+
+  document.getElementById('today').innerHTML = today.map(videoRow).join('');
+
+  document.getElementById('movements').innerHTML =
+    movGroup('Entered top 5','in',inn)+
+    movGroup('Left top 5','out',out)+
+    movGroup('Remained in top 5','stay',both);
+
+  const byDate={};
+  history.forEach(function(v){
+    var d=fmtDate(v.snapshot_ts);
+    if(!byDate[d])byDate[d]=[];
+    byDate[d].push(v);
+  });
+
+  document.getElementById('history').innerHTML=Object.entries(byDate).map(function(entry){
+    var date=entry[0],vids=entry[1];
+    return '<div class="date-group"><div class="date-label">'+date+'</div>'
+      +vids.map(function(v){
+        return '<div class="history-row"><span class="rank-num">'+v.rank+'</span>'
+          +'<span class="history-title">'+v.snippet_title.trim()+'</span>'
+          +'<span class="history-views">'+fmtViews(v.statistics_viewcount)+'</span></div>';
+      }).join('')+'</div>';
+  }).join('');
+})();
+</script>
+
+
+</body></html>
