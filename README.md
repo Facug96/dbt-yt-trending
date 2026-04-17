@@ -62,6 +62,6 @@ Table: `youtube_snapshots`
 
 The frontend fetches five static JSON files from S3 and renders three views:
 
-- **Hoy** — current top 5 with thumbnails, channel, and view count
-- **Movimientos** — what entered, left, or stayed vs the previous snapshot
-- **Histórico** — all snapshots grouped by date
+- **Today** — current top 5 with thumbnails, channel, and view count
+- **Movements** — what entered, left, or stayed vs the previous snapshot
+- **History** — all snapshots grouped by date
